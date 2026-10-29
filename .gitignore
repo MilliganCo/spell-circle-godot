@@ -1,0 +1,16 @@
+# Godot 4
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# Local editor binary (keep outside git)
+Godot_v4.7.1-stable_win64/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+.vscode/*.log

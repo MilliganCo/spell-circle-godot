@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/entities/enemies/crawler.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = &"crawler"
+display_name = "Ползун"
+scene = ExtResource("2")
+max_health = 3
+damage = 1
+movement_points = 1
+armor = 0
+behavior_id = &"greedy_center"

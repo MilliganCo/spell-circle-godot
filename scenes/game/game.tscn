@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/game/game_controller.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/game/board.tscn" id="2"]
+[ext_resource type="Resource" path="res://resources/enemies/crawler.tres" id="3"]
+[ext_resource type="Script" path="res://scripts/managers/turn_manager.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/rings/ring_controller.gd" id="5"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1")
+crawler_data = ExtResource("3")
+
+[node name="TurnManager" type="Node" parent="."]
+script = ExtResource("4")
+
+[node name="RingController" type="Node" parent="."]
+script = ExtResource("5")
+
+[node name="Board" parent="." instance=ExtResource("2")]
+position = Vector2(352, 72)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 300.0
+offset_bottom = 48.0
+text = "HP: 10 / 10"
+
+[node name="TurnLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 300.0
+offset_bottom = 80.0
+text = "Ход: 0"
+
+[node name="PhaseLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 480.0
+offset_bottom = 112.0
+text = "Фаза: —"
+
+[node name="InfoLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 16.0
+offset_top = 112.0
+offset_right = 560.0
+offset_bottom = 144.0
+text = "..."
+
+[node name="DefeatLabel" type="Label" parent="CanvasLayer/HUD"]
+visible = false
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 300.0
+offset_bottom = 196.0
+theme_override_font_sizes/font_size = 28
+text = "Defeat"
+
+[node name="ComboLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 16.0
+offset_top = 200.0
+offset_right = 480.0
+offset_bottom = 232.0
+text = "—"
+
+[node name="RotationsLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 16.0
+offset_top = 232.0
+offset_right = 300.0
+offset_bottom = 264.0
+text = "Вращения: 0"
+
+[node name="UndoButton" type="Button" parent="CanvasLayer/HUD"]
+offset_left = 240.0
+offset_top = 640.0
+offset_right = 360.0
+offset_bottom = 688.0
+text = "Undo"
+
+[node name="EndTurnButton" type="Button" parent="CanvasLayer/HUD"]
+offset_left = 16.0
+offset_top = 640.0
+offset_right = 220.0
+offset_bottom = 688.0
+text = "End Turn"
+
+[node name="RingControls" type="Control" parent="CanvasLayer/HUD"]
+offset_left = 16.0
+offset_top = 280.0
+offset_right = 360.0
+offset_bottom = 420.0
+
+[node name="InnerLeft" type="Button" parent="CanvasLayer/HUD/RingControls"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 120.0
+offset_bottom = 36.0
+text = "Inner Left"
+
+[node name="InnerRight" type="Button" parent="CanvasLayer/HUD/RingControls"]
+offset_left = 128.0
+offset_top = 0.0
+offset_right = 248.0
+offset_bottom = 36.0
+text = "Inner Right"
+
+[node name="MiddleLeft" type="Button" parent="CanvasLayer/HUD/RingControls"]
+offset_left = 0.0
+offset_top = 44.0
+offset_right = 120.0
+offset_bottom = 80.0
+text = "Middle Left"
+
+[node name="MiddleRight" type="Button" parent="CanvasLayer/HUD/RingControls"]
+offset_left = 128.0
+offset_top = 44.0
+offset_right = 248.0
+offset_bottom = 80.0
+text = "Middle Right"
+
+[node name="OuterLeft" type="Button" parent="CanvasLayer/HUD/RingControls"]
+offset_left = 0.0
+offset_top = 88.0
+offset_right = 120.0
+offset_bottom = 124.0
+text = "Outer Left"
+
+[node name="OuterRight" type="Button" parent="CanvasLayer/HUD/RingControls"]
+offset_left = 128.0
+offset_top = 88.0
+offset_right = 248.0
+offset_bottom = 124.0
+text = "Outer Right"
